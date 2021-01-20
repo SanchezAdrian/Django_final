@@ -8,7 +8,7 @@ class Cliente(models.Model):
     Apellidos=models.CharField(max_length=70)
     Direccion=models.CharField(max_length=50)
     Telefono=models.CharField(max_length=9)
-    FechaNacimiento=models.DateField()
+    FechaNacimiento=models.DateField(null=True)
 
     def __str__(self):
         return self.Dni
