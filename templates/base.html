@@ -1,0 +1,24 @@
+<div class="container">
+    <br/>
+    <ul class="navbar-nav">
+        {%if not request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <p>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'registro' %}">Registro</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{url 'logout' %}">Salir</a>
+        </li>
+        {% endif %}
+    </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          
+        </div>
+    </div>
+    
+    </div>
