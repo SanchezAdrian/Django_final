@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+<html>
+    <head>
+     
+    </head>
+
+    
+    {% block content %}
+        <body style="height: 100%;">            
+                <div class="container text-center">
+                    {% if  object_list %}
+                    {% if user.perfil.Rol == 1 %}
+                    <h1> Tus coches </h1> 
+                    {% else %}
+                    {% with object_list.all|first as act %}
+                    <h1> Coches del usuario {{act.Perfil}}</h1>
+                    {% endwith %}
+                    {% endif %}
+                    </div>
+                </div>
+                <table class="table table-striped table-responsive-md">
+                    <thead class="thead-gray">
+                        <tr>
+                            <th></th>
+                            <th>Matricula</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Color</th>
+                            <th>Fecha matriculación</th>
+                            <th>Detalles</th>
+                            {%if user.perfil.Rol == 1 %}
+                            <th> 
+                            <div class="d-flex flex-row-reverse">
+                                <a type="button" class="btn btn-outline-primary " href="{% url 'crear_coche'  %}"><i class="fas fa-plus"></i><i class="fas fa-car"></i> Añadir coche</a>
+                            </div>
+                            </th>
+                            {% else %}
+                            <th></th>
+                            {% endif %}
+                           
+                        </tr>
+                        </thead>
+                        {% endif %}
+                        {% load el_pagination_tags %}
+
+                        {% paginate object_list %}
+                        {% for c in object_list %}
+                        <tr>
+                            {% load static %}
+                            <td> <img src="{{ c.Imagen.url }}" style="width:100px;"> {{ c.Imagen.url }} </th>
+                            <td> {{ c.Matricula }}</td>
+                            <td>{{ c.Marca }}</td>
+                            <td>{{ c.Modelo }}</th>
+                            <td>{{ c.Color }}</td>
+                            <td>{{ c.FechaMatriculacion }}</td>
+                            <td><a type="button" class="btn btn-outline-primary" href="{% url 'detail_coche' c.id  %}"><i class="far fa-eye"></i><i class="fas fa-car"></i> Detalle Coches</a></th>
+                            {%if user.perfil.id == c.Perfil.id %}
+                            <td><a type="submit" class="btn btn-outline-danger" onclick="return confirm('Seguro que quieres borrar el Coche {{c.Marca}} Matriculado el {{c.FechaMatriculacion}}?');" href="{% url 'delete_coche' c.id  %}"><i class="fas fa-trash"></i>Eliminar</a></th>  
+                            <td><a type="button" class="btn btn-outline-primary" href="{% url 'update_coche' c.id  %}"><i class="fas fa-edit"></i>Editar</a></th>  
+                            {% else %}
+                                <th></th>
+                                <th></th>
+                            {% endif %}
+                        </tr>
+                        {% empty %}
+                        <div class="container text-center">
+                           
+                            <h2> No tienes hay coches en el sistema </h2>
+                        </div>
+                        {% endfor %}
+                    </table>
+                    <div class="d-flex justify-content-center">  {% show_pages %} </div>
+
+       
+          </body>
+      {% endblock %}
+</html>
