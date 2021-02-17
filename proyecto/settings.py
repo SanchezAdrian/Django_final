@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'registration',
-    'jet.dashboard',
     'el_pagination',
     'django.contrib.admin',
     'django.contrib.auth',
