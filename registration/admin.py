@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User, Group
-from jet.admin import CompactInline
 from nucleo.models import *
 from django import forms
 from registration.forms import validate, PerfilAdmin
@@ -9,7 +8,8 @@ from registration.forms import validate, PerfilAdmin
 
 
 
-class PerfilInLine(CompactInline):
+class PerfilInLine(admin.StackedInline):
+    
     model = Perfil
     form = PerfilAdmin
     can_delete = False
