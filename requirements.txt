@@ -1,11 +1,11 @@
 arabic-reshaper==2.1.1
 asgiref==1.1.1
-astroid @ file:///C:/ci/astroid_1592487315634/work
+astroid==2.5
 beautifulsoup4==4.9.3
 certifi==2020.11.8
-colorama @ file:///tmp/build/80754af9/colorama_1603211150991/work
+colorama==0.4.4
 dj-database-url==0.5.0
-Django @ file:///tmp/build/80754af9/django_1606860386887/work
+Django==3.1.4
 django-bootstrap4==2.3.1
 django-ckeditor==6.0.0
 django-cors-headers==3.7.0
@@ -21,23 +21,23 @@ future==0.18.2
 gunicorn==20.0.4
 html5lib==1.1
 install==1.3.4
-isort @ file:///tmp/build/80754af9/isort_1602603989581/work
+isort==5.7.0
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 olefile==0.46
-Pillow @ file:///C:/ci/pillow_1603823068645/work
-psycopg2 @ file:///C:/ci/psycopg2_1594305172475/work
-pylint @ file:///C:/ci/pylint_1598617153160/work
+Pillow==8.1.0
+psycopg2==2.8.6
+pylint==2.6.2
 PyPDF2==1.26.0
 python-bidi==0.4.2
 python-dateutil==2.8.1
 python-decouple==3.4
-pytz @ file:///tmp/build/80754af9/pytz_1606604771399/work
+pytz==2021.1
 reportlab==3.5.59
-six @ file:///C:/ci/six_1605187374963/work
+six==1.15.0
 soupsieve==2.1
-sqlparse @ file:///tmp/build/80754af9/sqlparse_1602184451250/work
-toml @ file:///tmp/build/80754af9/toml_1592853716807/work
+sqlparse==0.4.1
+toml==0.10.2
 webencodings==0.5.1
 whitenoise==5.2.0
 wincertstore==0.2
