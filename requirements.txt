@@ -11,7 +11,6 @@ django-ckeditor==6.0.0
 django-cors-headers==3.7.0
 django-datetimepicker==3.14
 django-el-pagination==3.3.0
-django-jet==1.0.8
 django-jquery==3.1.0
 django-js-asset==1.2.2
 django-multi-form-view==2.0.1
