@@ -1,16 +1,10 @@
 from django.contrib import admin
 from nucleo.models import *
-from jet.filters import RelatedFieldAjaxListFilter
-from jet.admin import CompactInline
 from nucleo.forms import CocheAdminForm
 
 
  
 
-class PersonAdmin(admin.ModelAdmin):
-    list_filter = (
-        ('Perfil', RelatedFieldAjaxListFilter),
-    )
 
 class ContactoInLine(admin.ModelAdmin):
     model = Contacto
