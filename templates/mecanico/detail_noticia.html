@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  {% block content %}
+  {% load static %}
+  <body class="card">
+    <h1 class="text-center">{{noticia.Titulo}}</h1>
+    <div class="row text-center">
+        
+            <img src="{{ noticia.Foto.url }}" style="width:200px;" class="rounded float-left" style="width:150px;">
+            <div class="container text-left">
+                {{ noticia.Texto |safe }}
+            </div>
+  
+    </div>
+  
+    <div  class="d-block p-2">
+        {% if noticia.FechaModificacion == None %}
+        Fecha creacion: {{noticia.FechaCreacion}}
+        {% else %}
+        Fecha ultima modificacion: {{noticia.FechaModificacion}}
+        {% endif %}
+    </div>
+    <div class="d-block p-2">
+        Creador {{noticia.Creador.Nombre}} {{noticia.Creador.Apellidos}} 
+    </div>
+    <br/>
+    {%if user.perfil.id == noticia.Creador.id %}
+    <a type="button" class="btn btn-outline-primary" href="{% url 'update_noticia' noticia.id %}"><i class="fas fa-wrench">Editar</i></a>
+    {% endif %}
+    
+  </body>
+  {% endblock %}
+</html>

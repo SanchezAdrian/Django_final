@@ -1,10 +1,75 @@
-<div class="container">
-    <a class="nav-link" href="{% url 'logout' %}">salir</a>
-    <br />
-    <div class="panel panel-default">
-        <div class="panel-heading">
-           Hola
-        </div>
-    </div>
+{% extends "base.html" %}
+
+<html>
+    <head>
+     
+    </head>
+
     
-    </div>
+    {% block content %}
+        <body style="height: 100%;">
+            <table class="table table-striped">
+                <thead class="thead-gray">
+                        <tr>
+                            <th></th>
+                            <th>Titulo</th>
+                            <th>Fecha publicacion</th>
+                            
+                            <th>Detalles</th>
+                            {%if user.perfil.Rol == 2 %}
+                            <th><a type="button" class="btn btn-outline-primary" href="{% url 'crear_noticia'  %}"><i class="fas fa-plus"></i> Añadir noticia</a></th>   
+                            {% endif %}
+                           
+                        </tr>
+                    </thead>
+                    {% load el_pagination_tags %}
+
+                        {% paginate object_list %}
+                        {% for c in object_list %}
+                        <tr>
+                            {% load static %}
+                            <th> <img src="{{ c.Foto.url }}" style="width:100px;"> </th>
+                            <th>{{ c.Titulo }}</th>
+                            <th>{{ c.FechaCreacion }}</th>
+                           
+                            <th><a type="button" class="btn btn-outline-primary" href="{% url 'detail_noticia' c.id %}"><i class="far fa-eye"></i><i class="far fa-newspaper"></i> Detalles noticia</a></th>
+                            {%if  user.perfil.Rol == 2 %}
+                            {%if  user.perfil.id == c.Creador.id %}
+                            <th><a type="submit" class="btn btn-outline-danger" onclick="return confirm('Seguro que quieres borrar la noticia');" href="{% url 'delete_noticia' c.id %}"><i class="fas fa-trash"></i>Eliminar</a></th>  
+                            <th><a type="button" class="btn btn-outline-primary"  href="{% url 'update_noticia' c.id %}"><i class="fas fa-edit"></i>Editar</a></th>  
+                            {% else %}
+                            <th></th>
+                            <th></th>
+                            {% endif %}
+                            {% endif %}
+                        </tr>
+                        {% empty %}
+                            <th>No existen noticias</th>
+                        {% endfor %}
+                    </table>
+                    <div class="d-flex justify-content-center">  {% show_pages %} </div>
+
+            
+          </body>
+          
+      {% endblock %}
+ 
+      {% block log %}
+      <body class="bg-light">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                 <div class="card card-signin  my-5">
+ 
+                    <a type="button" class="btn btn-outline-primary btn-block" href="{% url 'login' %}">Inicia Sesión</a>
+                    <a type="button" class="btn btn-outline-secondary btn-block" href="{% url 'registro' %}">Registrate</a>
+                 </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+      {% endblock %}
+</html>

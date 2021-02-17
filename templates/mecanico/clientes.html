@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+<html>
+    <head>
+
+
+    </head>
+      {% block content %}
+       
+           <body class="bg-light"> 
+               
+                <table class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>
+                            </th>
+                            <th>DNI</th>
+                            <th>NOMBRE</th>
+                            <th>APELLIDOS</th>
+                            <th>DIRECCION</th>
+                            <th>TELEFONO</th>  
+                            <th>FECHA DE NACIMIENTO</th>  
+                            <th>NOMBRE DE USUARIO</th>  
+                           
+                        </tr>
+
+                        <tr> 
+                               
+                                {% for Cli in object_list %}
+                            <tr>
+                                {% if not Cli.Dni == None %}
+                                <th><a type="button" class="btn btn-outline-primary btn-lg btn-block" href="{% url 'coches_clientes_par' Cli.id %}"><i class="fas fa-car"></i></a></th>
+                                <th>{{ Cli.Dni }}</th>
+                                <th>{{ Cli.Nombre }}</th>
+                                <th>{{ Cli.Apellidos }}</th>
+                                <th>{{ Cli.Direccion }}</th>
+                                <th>{{ Cli.Telefono }}</th>  
+                                <th>{{ Cli.FechaNacimiento }}</th>  
+                                <th>{{ Cli.user.username }}</th>  
+                                {% endif %}
+                                
+                            </tr>
+                             {% endfor %}
+                       
+                    </thead>
+                    </table>
+                    
+                </form>
+                   
+                </body>
+
+      {% endblock %}
+
+   
+</html>

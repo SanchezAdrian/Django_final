@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+<html>
+    <head>
+     
+    </head>
+
+    
+    {% block content %}
+        <body style="height: 100%;">
+                
+                <table class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Matricula</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Color</th>
+                            <th>Fecha matriculación</th>
+                            <th>Imagen</th>
+                            
+                            
+                             
+                           
+                        </tr>
+                        <tr>
+                            {% load static %}
+                            <th> {{coche.Matricula }}</th>
+                            <th>{{ coche.Marca }}</th>
+                            <th>{{ coche.Modelo }}</th>
+                            <th>{{ coche.Color }}</th>
+                            <th>{{ coche.FechaMatriculacion }}</th>
+                            <th> <img src="{{ coche.Imagen.url }}" style="width:100px;"> </th>
+                            {%if user.perfil.id == coche.Perfil.id %}
+                            <th>
+                                <div class="d-flex flex-column">
+                                    <a type="submit" class="btn btn-outline-danger" onclick="return confirm('Seguro que quieres borrar el coche {{coche.Marca}} Matriculado el {{coche.FechaMatriculacion}}?');" href="{% url 'delete_coche' coche.id  %}"><i class="fas fa-trash"></i>Eliminar</a> 
+                                    <a type="button" class="btn btn-outline-primary" href="{% url 'update_coche' coche.id  %}"><i class="fas fa-edit"></i>Editar</a> 
+                                </div>
+                            </th>
+                            {% endif %}
+                           
+                        </tr>
+                    </thead>
+                    </table>
+                    
+            
+            
+        
+         
+                {%if user.perfil.id == coche.Perfil.id %}
+                <a type="button" class="btn btn-outline-primary"  href="{% url 'crear_reparacion' coche.id  %}"><i class="fas fa-wrench">Solicitar reparación</i></a>
+                {% endif %}
+                <a type="button" class="btn btn-outline-primary"  href="{% url 'reparaciones_coche' coche.id  %}"><i class="fas fa-wrench">Ver reparaciones de este coche</i></a>
+            </div>
+        </div>
+          </body>
+      {% endblock %}
+</html>
