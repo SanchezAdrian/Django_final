@@ -1,5 +1,5 @@
 arabic-reshaper==2.1.1
-asgiref @ file:///tmp/build/80754af9/asgiref_1605055780383/work
+asgiref==1.1.1
 astroid @ file:///C:/ci/astroid_1592487315634/work
 beautifulsoup4==4.9.3
 certifi==2020.11.8
