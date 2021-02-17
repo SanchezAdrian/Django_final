@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'registration',
     'jet.dashboard',
-    'jet',
     'el_pagination',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -148,13 +147,11 @@ STATICFILES_DIRS = (
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
 
-JET_SIDE_MENU_COMPACT = True
-
-JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
 
 
 
-EL_PAGINATION_PER_PAGE = 3
+
+EL_PAGINATION_PER_PAGE = 5
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
